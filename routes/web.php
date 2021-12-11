@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home.home');
 });
+//Admin
+Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class, "index"])->name( 'adminHome');
+//login
+Route::get('/admin/login',[\App\Http\Controllers\Admin\HomeController::class, "adminLogin"])->name( 'adminLogin');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+
