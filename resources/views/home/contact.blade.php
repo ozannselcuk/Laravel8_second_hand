@@ -13,7 +13,12 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
                 <div class=" col-md-6" >
                     <br>
                     <h3> Iletişim Bilgileri</h3>
-                    {{$setting->contact}}
+                    <hr>
+                    <br>
+                    <p style="font-size: 15px">
+                        {{$setting->contact}}
+                    </p>
+
                 </div>
                 <div class="col-md-6">
                     <br>

@@ -22,8 +22,12 @@ Route::get('/aboutus',[\App\Http\Controllers\HomeController::class,'aboutus'])->
 Route::get('/faq',[\App\Http\Controllers\HomeController::class,'faq'])->name('faq');
 Route::get('/contact',[\App\Http\Controllers\HomeController::class,'contact'])->name('contact');
 Route::post('/send',[HomeController::class , 'sendmessage'])->name('send_message');
+Route::get('/product/{id}/{slug}',[\App\Http\Controllers\HomeController::class,'product'])->name('product');
+Route::get('/categoryproducts/{id}/{slug}',[\App\Http\Controllers\HomeController::class,'categoryproducts'])->name('categoryproducts');
 Route::get('/references',[\App\Http\Controllers\HomeController::class,'references'])->name('references');
 Route::get('/user/profile',[\App\Http\Controllers\HomeController::class,'profile'])->name('profile');
+Route::get('/addtocart/{id}',[\App\Http\Controllers\HomeController::class,'addtocart'])->name('addtocart');
+Route::post('/getproduct',[\App\Http\Controllers\HomeController::class,'getproduct'])->name('getproduct');
 //Admin
 Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class, "index"])->name( 'adminHome')->middleware('auth');
 //login

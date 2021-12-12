@@ -1,6 +1,11 @@
+@php
+    $setting= \App\Http\Controllers\HomeController:: getsetting();
+@endphp
 @extends('layouts.homeLayout')
 
-@section('title','Second Hand E-Commerce')
+@section('title', $data->title . "/Product List")
+@section('description'){{$data->description}}@endsection
+@section('keywords',$data->keywords)
 @section('content')
     <div class="container  ">
         <div class=" row p-1">
@@ -20,15 +25,10 @@
                             <div class="column one woocommerce-content">
 
                                 <div class="shop-filters">
-                                     <div class="header-search">
-                                         <form action="{{route('getproduct')}}" method="post" class="d-flex">
-                                             @csrf
-                                             @livewire('search')
-                                             <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-                                         </form>
-                                         @livewireScripts
-                                     </div>
 
+                                    <p class="woocommerce-result-count">
+                                        Showing 1–12 of 15 results
+                                    </p>
                                     <form class="woocommerce-ordering" method="get">
                                         <select name="orderby" class="orderby">
                                             <option value="menu_order" selected='selected'>Default sorting</option>
@@ -43,32 +43,30 @@
                                 <div class="products_wrapper isotope_wrapper">
 
                                     <ul class="products grid">
-                                        <ul class="products grid">
-                                            @foreach($datalist as $rs)
-                                                <li class="product isotope-item sale">
-                                                    <div class="image_frame scale-with-grid product-loop-thumb">
-                                                        <div class="image_wrapper">
-                                                            <a href="{{route('product',['id'=>$rs->id,'slug'=>$rs->slug])}}">
-                                                                <div class="mask"></div> <img width="300" height="300" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="scale-with-grid wp-post-image" />
-                                                            </a>
-                                                            <div class="image_links double">
-                                                                <a href="{{route('addtocart',['id'=>$rs->id,'slug'=>$rs->slug])}}" rel="nofollow" data-product_id="70" class="add_to_cart_button product_type_simple"><i class="icon-basket"></i></a><a class="link" href="{{route('product',['id'=>$rs->id,'slug'=>$rs->slug])}}"><i class="icon-link"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="onsale"><i class="icon-star"></i></span><a href="product-page.html"><span class="product-loading-icon added-cart"></span></a>
+                                        @foreach($datalist as $rs)
+                                        <li class="product isotope-item sale">
+                                            <div class="image_frame scale-with-grid product-loop-thumb">
+                                                <div class="image_wrapper">
+                                                    <a href="product-page.html">
+                                                        <div class="mask"></div> <img width="300" height="300" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="scale-with-grid wp-post-image" /> </a>
+                                                    <div class="image_links double">
+                                                        <a href="#" rel="nofollow" data-product_id="70" class="add_to_cart_button product_type_simple"><i class="icon-basket"></i></a><a class="link" href="{{route('product',['id'=>$rs->id,'slug'=>$rs->slug])}}"><i class="icon-link"></i></a>
                                                     </div>
-                                                    <div class="desc">
-                                                        <h4><a href="product-page.html"> {{$rs->title}}</a></h4>
-                                                        <div class="star-rating" title="Rated 4.00 out of 5">
-                                                            <span style="width:80%"><strong class="rating">4.00</strong> out of 5</span>
-                                                        </div>
-                                                        <span class="price"><del><span class="amount"> ${{$rs->price}}</span>
+                                                </div>
+                                                <span class="onsale"><i class="icon-star"></i></span><a href="product-page.html"><span class="product-loading-icon added-cart"></span></a>
+                                            </div>
+                                            <div class="desc">
+                                                <h4><a href="product-page.html"> {{$rs->title}}</a></h4>
+                                                <div class="star-rating" title="Rated 4.00 out of 5">
+                                                    <span style="width:80%"><strong class="rating">4.00</strong> out of 5</span>
+                                                </div>
+                                                <span class="price"><del><span class="amount"> ${{$rs->price}}</span>
                                                     </del> <ins><span class="amount">${{$rs->price}}</span></ins>
                                                     </span>
-                                                    </div>
-                                                </li>
-                                            @endforeach
-                                        </ul>   </ul>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                          </ul>
                                 </div>
                                 <!-- One full width row-->
                                 <div class="column one pager_wrapper">

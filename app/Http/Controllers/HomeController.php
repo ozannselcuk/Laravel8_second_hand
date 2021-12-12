@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Message;
+use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +23,11 @@ class HomeController extends Controller
  public function index(){
 
      $setting = Setting::first();
-     return view('home.home',["setting"=>$setting]);
+     $daily= Product::select('id','title','image','price','slug')->limit(12)->inRandomOrder()->get();
+//     print_r($daily);
+//     exit();
+      return view('home.home',["setting"=>$setting,"datalist"=>$daily]);
+
  }
 
     public function login(){
@@ -37,6 +43,35 @@ class HomeController extends Controller
         return redirect('/');
 
     }
+
+    public function product($id,$slug){
+       $data = Product::find($id);
+        $datalist = Image::where('product_id',$id)-> get();
+//       print_r($data);
+//       exit();
+        return view('home.product_detail',["data"=>$data,'datalist'=>$datalist]);
+   }
+    public function getproduct (Request $request){
+        $data = Product::where('title',$request->input('search'))-> first();
+        return redirect()->route('product',['id'=>$data->id , 'slug'=>$data->slug]);
+   }
+
+    public function addtocart($id){
+       echo "Add to cart<br>";
+       $data = Product::find($id);
+        print_r($data);
+        exit();
+    }
+
+    public function categoryproducts ($id,$slug){
+        $datalist = Product::where('categories_id',$id)-> get();
+        $data = Category::find($id);
+//        print_r($data);
+//        exit();
+        return view('home.categoryproducts',["data"=>$data,'datalist'=>$datalist]);
+
+    }
+
     public function aboutus(){
         $setting = Setting::first();
         return view('home.aboutus',["setting"=>$setting]);

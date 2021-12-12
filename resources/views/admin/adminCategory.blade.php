@@ -1,3 +1,6 @@
+@php
+    $setting= \App\Http\Controllers\HomeController:: getsetting();
+@endphp
 @extends('layouts._admin')
 @section('title','Category')
 

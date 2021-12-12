@@ -12,8 +12,14 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
     <br>
 
     <div class="container">
+        <br>
         <h3>About Us</h3>
-        {{$setting->aboutus}}
+        <hr>
+        <br>
+        <p style="font-size: 15px">
+            {{$setting->aboutus}}
+        </p>
+        <br>
     </div>
     <br>
 

@@ -49,7 +49,7 @@ class ProductController extends Controller
         $data->description=$request->input('description' );
         $data->slug=$request->input('slug' );
         $data->status=$request->input('status' );
-        $data->category_id=$request->input('category_id' );
+        $data->categories_id=$request->input('category_id' );
         $data->user_id= Auth::id();
         $data->price=$request->input('price' );
 
