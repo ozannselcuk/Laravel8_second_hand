@@ -1,9 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\database",
     "\\database\\migrations",
-    "\\database\\seeders"
+    "\\database\\seeders",
+    "\\public",
+    "\\public\\admins",
+    "\\resources",
+    "\\routes"
   ],
-  "SelectedNode": "\\resources",
+  "SelectedNode": "\\public\\index.php",
   "PreviewInSolutionExplorer": false
 }
