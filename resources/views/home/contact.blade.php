@@ -15,7 +15,7 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
                     <h3> Iletişim Bilgileri</h3>
                     <hr>
                     <br>
-                    <p style="font-size: 15px">
+                    <p style="font-size: 15px; font-weight: bold; ">
                         {{$setting->contact}}
                     </p>
 
