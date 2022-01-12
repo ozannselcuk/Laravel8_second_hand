@@ -6,7 +6,7 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
 @section('description'){{$setting->description}}@endsection
 @section('keywords',$setting->keywords)
 @section('content')
-
+    @include('home.messages')
     <div class="section">
         <div class="container">
             <div class="row">
@@ -23,6 +23,7 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
 
                                         <div id="contactWrapper_popup">
                                             <form id="contactform_popup" class="flv_fullwidth" action="{{route('send_message')}}" method="post">
+                                                @csrf
                                                 <p>
                                                     <span>
                                                         <input type="text" name="name" id="name_popup" aria-required="true" aria-invalid="false" placeholder="Name&Surname">

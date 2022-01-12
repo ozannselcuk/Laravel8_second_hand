@@ -259,6 +259,7 @@
                 <li><a href="{{route('admin_category')}}">Category</a></li>
                 <li><a href="{{route('admin_products')}}">Products</a></li>
                 <li><a href="{{route('admin_setting')}}">Setting</a></li>
+                <li><a href="{{route('admin_message')}}">Contact Messages</a></li>
 
                 <li class="mega-menu mega-menu-sm">
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">

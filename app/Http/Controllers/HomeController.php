@@ -53,15 +53,16 @@ class HomeController extends Controller
         $setting = Setting::first();
         return view('home.contact');
     }
-    public function send_message(Request $request){
-       $data= new Message();
-        $data->name=$request->input('name' );
-        $data->email=$request->input('email' );
-        $data->phone=$request->input('phone' );
-        $data->subject=$request->input('subject' );
-        $data->message=$request->input('message' );
+    public function  sendmessage(Request $request){
+        $data= new Message();
+        $data->name=$request->input('name');
+        $data->email=$request->input('email');
+        $data->phone =$request->input('phone');
+        $data->subject=$request->input('subject');
+        $data->message=$request->input('message');
+        $data->note = $_SERVER['REMOTE_ADDR'];
         $data->save();
-        return redirect()->route('contact');
 
+        return redirect()->route('contact')->with('success','Your message send successfuly');
     }
 }
