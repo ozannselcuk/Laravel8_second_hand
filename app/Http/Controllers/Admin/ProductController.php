@@ -57,7 +57,9 @@ class ProductController extends Controller
         $data->minquantity=$request->input('minquantity' );
         $data->tax=(int)$request->input('tax' );
         $data->detail=$request->input('detail' );
-        $data->image= Storage::putFile('image',$request->file('image'));//file upload
+        if ($request->file('image') !== null){
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_products');
 
@@ -102,14 +104,16 @@ class ProductController extends Controller
         $data->description=$request->input('description' );
         $data->slug=$request->input('slug' );
         $data->status=$request->input('status' );
-        $data->category_id=$request->input('category_id' );
+        $data->categories_id=$request->input('category_id' );
         $data->user_id= Auth::id();
         $data->price=$request->input('price' );
         $data->quantity=$request->input('quantity');
         $data->minquantity=$request->input('minquantity');
         $data->tax=(int)$request->input('tax' );
         $data->detail=$request->input('detail' );
-        $data->image= Storage::putFile('images',$request->file('image'));//file upload
+        if ($request->file('image') !== null){
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_products');
     }

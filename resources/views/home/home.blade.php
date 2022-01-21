@@ -8,7 +8,7 @@
         </div>
 
     </div>
-
+    @include('home._slider')
     <div id="Content">
 
         <div class="content_wrapper clearfix">

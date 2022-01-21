@@ -12,8 +12,8 @@ class CategoryController extends Controller
     protected $appends=[
         'getParentTree'
     ];
-    public static function getParentTree($category,$title){
-        if ($category->parent_id==0)
+    public function getParentTree($category,$title){
+        if ($category['parent_id']==0)
         {
             return $title;
         }

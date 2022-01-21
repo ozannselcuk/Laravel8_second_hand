@@ -33,7 +33,8 @@
     <link rel='stylesheet' href='{{asset('css')}}/structure.css'>
     <link rel='stylesheet' id='style-static' href='{{asset('css')}}/be_style.css'>
     <link rel='stylesheet' href='{{asset('css')}}/custom.css'>
-
+    <link rel="stylesheet" href="{{asset('css')}}/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{asset('css')}}/owl.theme.default.min.css">
     <!-- Revolution Slider -->
     <link rel="stylesheet" href="{{asset('css')}}/plugins/rs-plugin/css/settings.css">
     @stack('css')
@@ -49,7 +50,9 @@
 <!-- JS -->
 
 <script src="{{asset('js')}}/jquery-2.1.4.min.js"></script>
-
+<script src="{{asset('js')}}/owl.carousel.min.js"></script>
+<script src="{{asset('js')}}/main.js"></script>
+<script src="{{asset('js')}}/jquery.min.js"></script>
 <script src="{{asset('js')}}/mfn.menu.js"></script>
 <script src="{{asset('js')}}/jquery.plugins.js"></script>
 <script src="{{asset('js')}}/jquery.jplayer.min.js"></script>
@@ -137,7 +140,7 @@
             var retinaEl = jQuery("#logo img");
             var retinaLogoW = retinaEl.width();
             var retinaLogoH = retinaEl.height();
-            retinaEl.attr("src","images/logo-retina.png").width(retinaLogoW).height(retinaLogoH)
+            retinaEl.attr("src","{{asset('css')}}/images/logo-retina.png").width(retinaLogoW).height(retinaLogoH)
         }
     });
 </script>

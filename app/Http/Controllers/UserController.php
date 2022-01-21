@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Setting;
 use App\Models\User;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,8 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-      $setting= Setting::first();
-        return view('home.profile',['setting'=>$setting,'page'=>'home']);
+        $setting= Setting::first();
+        return view('home.user_profile',['setting'=>$setting,'page'=>'home']);
 
 
     }
@@ -86,5 +88,10 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+    public function myreviews()
+    {
+        $datalist = Review::where('user_id','=',Auth::user()->id)->get();
+        return view('home.user_reviews',['datalist'=>$datalist]);
     }
 }

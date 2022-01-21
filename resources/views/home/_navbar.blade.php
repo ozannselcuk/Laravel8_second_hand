@@ -1,5 +1,5 @@
 @php
-$setting= \App\Http\Controllers\HomeController:: getsetting();
+    $setting= \App\Http\Controllers\HomeController:: getsetting();
 @endphp
 <div id="Header_wrapper">
     <!-- Header -->
@@ -22,21 +22,21 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
                     </ul>
                     <!--Social info area-->
                     <ul class="social">
-                         @if($setting->facebook !=null)
-                        <li class="facebook">
-                            <a href="{{$setting->facebook}}" title="Facebook"><i class="icon-facebook"></i></a>
-                        </li>
+                        @if($setting->facebook !=null)
+                            <li class="facebook">
+                                <a href="{{$setting->facebook}}" title="Facebook"><i class="icon-facebook"></i></a>
+                            </li>
                         @endif
                         @if($setting->twitter !=null)
-                                 <li class="facebook">
-                                     <a href="{{$setting->twitter}}" title="Twitter"><i class="icon-twitter"></i></a>
-                                 </li>
-                             @endif
-                             @if($setting->instagram !=null)
-                                 <li class="facebook">
-                                     <a href="{{$setting->instagram}}" title="Instagram"><i class="icon-instagram"></i></a>
-                                 </li>
-                             @endif
+                            <li class="facebook">
+                                <a href="{{$setting->twitter}}" title="Twitter"><i class="icon-twitter"></i></a>
+                            </li>
+                        @endif
+                        @if($setting->instagram !=null)
+                            <li class="facebook">
+                                <a href="{{$setting->instagram}}" title="Instagram"><i class="icon-instagram"></i></a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -48,7 +48,8 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
                     <div class="top_bar_left clearfix">
                         <!-- Logo-->
                         <div class="logo">
-                            <a id="logo" href="{{route('home')}}" title="BeTheme - Best Html Theme Ever"><img class="scale-with-grid" src="images/logo1.png" />
+                            <a id="logo" href="{{route('home')}}" title="BeTheme - Best Html Theme Ever"><img
+                                    class="scale-with-grid" src="{{asset('admins')}}/images/letgo.png"/>
                             </a>
                         </div>
                         <!-- Main menu-->
@@ -59,9 +60,24 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
                                         <a href="{{route('home')}}"><span>Home</span></a>
 
                                     </li>
-                                    <li>
-                                     @include('home.category')
+
+                                    @php($parentCategories= \App\Http\Controllers\HomeController::categorylist())
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Categories
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            @foreach($parentCategories as $rs)
+                                                <a href="{{route('categoryproducts' , ['id'=>$rs->id , 'slug'=>$rs->title])}}">{{$rs->title}}</a><br>
+                                                @if(count($rs->children))
+                                                    @include('home.categorytree', ['children'=>$rs->children])
+                                                @endif
+
+                                            @endforeach
+                                        </div>
                                     </li>
+
                                     <li>
                                         <a href="{{route('home')}}"><span>Campains</span></a>
 
@@ -92,10 +108,9 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
                                     </li>
 
 
-
-
                                 </ul>
-                            </nav><a class="responsive-menu-toggle" href="#"><i class="icon-menu"></i></a>
+                            </nav>
+                            <a class="responsive-menu-toggle" href="#"><i class="icon-menu"></i></a>
                         </div>
                         <!-- Secondary menu area - only for certain pages -->
                         <div class="secondary_menu_wrapper">
@@ -135,34 +150,41 @@ $setting= \App\Http\Controllers\HomeController:: getsetting();
                         <!-- Header Searchform area-->
                         <div class="search_wrapper">
                             <form method="get" action="#">
-                                <i class="icon_search icon-search"></i><a href="#" class="icon_close"><i class="icon-cancel"></i></a>
-                                <input type="text" class="field" name="s" placeholder="Enter your search" />
-                                <input type="submit flv_disp_none" class="submit" value="" />
+                                <i class="icon_search icon-search"></i><a href="#" class="icon_close"><i
+                                        class="icon-cancel"></i></a>
+                                <input type="text" class="field" name="s" placeholder="Enter your search"/>
+                                <input type="submit flv_disp_none" class="submit" value=""/>
                             </form>
                         </div>
                     </div>
                     <div class="top_bar_right">
                         <div class="top_bar_right_wrapper">
+                        @auth
+                            @php($shopCount = \App\Models\Shopcart::where('user_id','=',\Illuminate\Support\Facades\Auth::id())->count())
                             <!-- Shopping cart icon-->
-                            <a id="header_cart" href="#"><i class="icon-basket"></i><span>0</span></a><a id="search_button" href="#"><i class="icon-search"></i></a>
-                            <!--wpml flags selector-->
+                                <a id="header_cart" href="{{route('user_shopcart')}}"><i
+                                        class="icon-basket"></i><span>{{$shopCount}}</span></a><a id="search_button"
+                                                                                                  href="#"><i
+                                        class="icon-search"></i></a>
+                                <!--wpml flags selector-->
+                            @endauth
                             <div class="wpml-languages enabled">
-                               @auth
-                                <strong>{{Auth::user()->name}}</strong><br>
+                                @auth
+                                    <strong>{{Auth::user()->name}}</strong><br>
 
-                                <a href="/login">Login</a>
+                                    <a href="/login">Login</a>
                                 @endauth
                                 @guest()
-                                       <a href="/login">Login</a>/<a href="/register ">Join</a>
-                                   @endguest
+                                    <a href="/login">Login</a>/<a href="/register ">Join</a>
+                                @endguest
                                 <ul class="wpml-lang-dropdown">
                                     <li>
 
-                                        <a href="{{route('adminLogin')}}">Login</a>
+                                        <a href="/login">Login</a>
 
                                     </li>
                                     <li>
-                                        <a href="{{route('profile')}}">My Account</a>
+                                        <a href="{{route('myprofile')}}">My Account</a>
                                     </li>
                                     <li>
                                         <a href="#">Checkout</a>

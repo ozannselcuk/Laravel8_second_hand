@@ -4,7 +4,7 @@ $parentCategories= \App\Http\Controllers\HomeController::categorylist()
 @endphp
 
     <li  class="@if(!isset($page))show-on-click @endif">
-        <a href="home-modern-header.html"><span>Categories</span></a>
+        <a href="#"><span>Categories</span></a>
 
         <ul class="sub-menu">
             @foreach($parentCategories as $rs)

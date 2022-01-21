@@ -17,7 +17,7 @@
                     </label>
                     <div class="col-lg-6">
                         <select class="form-control" id="val-skill" name="parent_id">
-
+                            <option value="0">Main Category</option>
                             @foreach($datalist as $rs)
                             <option value="{{$rs->id}}" @if($rs->id == $rs->parent_id) selected="selected"@endif>{{\App\Http\Controllers\Admin\CategoryController::getParentTree($rs,$rs->title)}}</option>
                             @endforeach

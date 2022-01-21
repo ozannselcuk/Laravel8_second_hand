@@ -46,8 +46,8 @@
     <div class="nav-header">
         <div class="brand-logo">
             <a href="{{route('adminHome')}}">
-                <b class="logo-abbr"><img src="{{asset('admins')}}/images/logo.png" alt=""> </b>
-                <span class="logo-compact"><img src="{{asset('admins')}}/images/logo-compact.png" alt=""></span>
+                <b class="logo-abbr"><img src="{{asset('admins')}}/images/letgo.png" alt=""> </b>
+                <span class="logo-compact"><img src="{{asset('admins')}}/images/letgo.png" alt=""></span>
                 <span class="brand-title">
                         <img src="{{asset('admins')}}/images/logo-text.png" alt="">
                     </span>
@@ -260,6 +260,10 @@
                 <li><a href="{{route('admin_products')}}">Products</a></li>
                 <li><a href="{{route('admin_setting')}}">Setting</a></li>
                 <li><a href="{{route('admin_message')}}">Contact Messages</a></li>
+                <li><a href="{{route('admin_review')}}">Reviews</a></li>
+                <li><a href="{{route('admin_users')}}">Users</a></li>
+                <li><a href="{{route('admin_orders')}}">Orders</a></li>
+
 
                 <li class="mega-menu mega-menu-sm">
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">

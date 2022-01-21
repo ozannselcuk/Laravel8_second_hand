@@ -21,12 +21,12 @@ class HomeController extends Controller
 
     }
  public function index(){
-
+     $last= Product::all()->random(3);
      $setting = Setting::first();
      $daily= Product::select('id','title','image','price','slug')->limit(12)->inRandomOrder()->get();
 //     print_r($daily);
 //     exit();
-      return view('home.home',["setting"=>$setting,"datalist"=>$daily]);
+      return view('home.home',["setting"=>$setting,"datalist"=>$daily,"last"=>$last]);
 
  }
 
@@ -47,9 +47,10 @@ class HomeController extends Controller
     public function product($id,$slug){
        $data = Product::find($id);
         $datalist = Image::where('product_id',$id)-> get();
+        $reviews = \App\Models\Review::where('product_id', $id)->get();
 //       print_r($data);
 //       exit();
-        return view('home.product_detail',["data"=>$data,'datalist'=>$datalist]);
+        return view('home.product_detail', ['data' => $data, 'datalist' => $datalist, 'reviews' => $reviews]);
    }
     public function getproduct (Request $request){
         $data = Product::where('title',$request->input('search'))-> first();
@@ -64,10 +65,9 @@ class HomeController extends Controller
     }
 
     public function categoryproducts ($id,$slug){
-        $datalist = Product::where('categories_id',$id)-> get();
+        $datalist = Product::where('categories_id','=',$id)-> get();
+
         $data = Category::find($id);
-//        print_r($data);
-//        exit();
         return view('home.categoryproducts',["data"=>$data,'datalist'=>$datalist]);
 
     }
