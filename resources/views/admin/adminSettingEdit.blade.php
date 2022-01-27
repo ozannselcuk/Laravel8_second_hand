@@ -223,10 +223,8 @@
                                                 </label>
                                                 <div class="col-lg-6">
 
-                                                    <textarea name="reference"></textarea>
-                                                    <script>
-                                                        CKEDITOR.replace( 'reference' );
-                                                    </script>
+                                                    <textarea id="references" name="references">{{$data->references}}</textarea>
+
                                                 </div>
                                             </div>
 

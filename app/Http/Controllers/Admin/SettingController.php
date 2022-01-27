@@ -103,7 +103,7 @@ class SettingController extends Controller
         $data->twitter=$request->input('twitter' );
         $data->aboutus=$request->input('aboutus' );
         $data->contact=$request->input('contact' );
-        $data->references=$request->input('references' );
+        $data->references=$request->input('references');
         $data->status=$request->input('status' );
         $data->save();
         return redirect()->route('admin_setting');
