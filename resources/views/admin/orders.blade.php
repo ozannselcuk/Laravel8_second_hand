@@ -1,5 +1,5 @@
 @extends('layouts._admin')
-@section('title','Reviews')
+@section('title','Orders')
 @include('home.messages')
 @section('content')
 
@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h3 >Message List</h3>
+                <h3 >Order List</h3>
                 <br><br>
 
                 <div class="table-responsive">

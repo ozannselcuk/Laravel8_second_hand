@@ -88,7 +88,7 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                  data-parent="#accordion">
                                 <div class="card-body">
-                                    {{$data->description}}  </div>
+                                    {!!$data->detail!!}  </div>
                             </div>
                         </div>
                         <div class="card">

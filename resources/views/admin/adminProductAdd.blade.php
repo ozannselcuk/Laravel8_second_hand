@@ -106,7 +106,7 @@
                     <label class="col-lg-4 col-form-label">Status</span>
                     </label>
                     <div class="col-lg-6">
-                        <select class="form-control" id="val-skill" name="staatus">
+                        <select class="form-control" id="val-skill" name="status">
                             <option selected="selected">False</option>
                             <option >True</option>
 

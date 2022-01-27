@@ -17,7 +17,7 @@
             <a href="{{route('user_product')}}">My Products</a>
         </li>
         <li class="cat-item cat-item-41">
-            <a href="{{'logout'}}">Logout</a>
+            <a href="{{route('logout')}}">Logout</a>
         </li>
     </ul>
 </aside>

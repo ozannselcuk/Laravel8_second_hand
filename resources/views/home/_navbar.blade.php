@@ -3,7 +3,7 @@
 @endphp
 <div id="Header_wrapper">
     <!-- Header -->
-    <header id="Header">
+    <div id="Header">
         <!-- Header Top -  Info Area -->
         <div id="Action_bar">
             <div class="container">
@@ -69,7 +69,8 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             @foreach($parentCategories as $rs)
-                                                <a href="{{route('categoryproducts' , ['id'=>$rs->id , 'slug'=>$rs->title])}}">{{$rs->title}}</a><br>
+                                                <a href="{{route('categoryproducts' , ['id'=>$rs->id , 'slug'=>$rs->title])}}">{{$rs->title}}</a>
+                                                <br>
                                                 @if(count($rs->children))
                                                     @include('home.categorytree', ['children'=>$rs->children])
                                                 @endif
@@ -82,14 +83,8 @@
                                         <a href="{{route('home')}}"><span>Campains</span></a>
 
                                     </li>
-                                    <li>
-                                        <a href="{{route('home')}}"><span>New Products</span></a>
 
-                                    </li>
-                                    <li>
-                                        <a href="{{route('home')}}"><span>xxxxx</span></a>
 
-                                    </li>
                                     <li>
                                         <a href="{{route('references')}}"><span>References</span></a>
 
@@ -136,9 +131,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a target="_blank" href="http://bit.ly/1M6lijQ">Buy it now !</a>
-                                    </li>
+
                                 </ul>
                             </nav>
                         </div>
@@ -147,59 +140,55 @@
                             <a href="#" target="_blank"><img src="images/468x60.gif">
                             </a>
                         </div>
-                        <!-- Header Searchform area-->
-                        <div class="search_wrapper">
-                            <form method="get" action="#">
-                                <i class="icon_search icon-search"></i><a href="#" class="icon_close"><i
-                                        class="icon-cancel"></i></a>
-                                <input type="text" class="field" name="s" placeholder="Enter your search"/>
-                                <input type="submit flv_disp_none" class="submit" value=""/>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="top_bar_right">
-                        <div class="top_bar_right_wrapper">
-                        @auth
-                            @php($shopCount = \App\Models\Shopcart::where('user_id','=',\Illuminate\Support\Facades\Auth::id())->count())
-                            <!-- Shopping cart icon-->
-                                <a id="header_cart" href="{{route('user_shopcart')}}"><i
-                                        class="icon-basket"></i><span>{{$shopCount}}</span></a><a id="search_button"
-                                                                                                  href="#"><i
-                                        class="icon-search"></i></a>
-                                <!--wpml flags selector-->
-                            @endauth
-                            <div class="wpml-languages enabled">
-                                @auth
-                                    <strong>{{Auth::user()->name}}</strong><br>
 
-                                    <a href="/login">Login</a>
-                                @endauth
-                                @guest()
-                                    <a href="/login">Login</a>/<a href="/register ">Join</a>
-                                @endguest
-                                <ul class="wpml-lang-dropdown">
-                                    <li>
+                        <div class="top_bar_right">
+                            <div class="top_bar_right_wrapper">
 
-                                        <a href="/login">Login</a>
+                            @auth
+                                @php($shopCount = \App\Models\Shopcart::where('user_id','=',\Illuminate\Support\Facades\Auth::id())->count())
+                                <!-- Shopping cart icon-->
+                                    <a id="header_cart" href="{{route('user_shopcart')}}"><i
+                                            class="icon-basket"></i><span>{{$shopCount}}</span></a><a id="search_button"
+                                                                                                      href="#">
 
-                                    </li>
-                                    <li>
-                                        <a href="{{route('myprofile')}}">My Account</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Checkout</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('logout')}}">Logout</a>
-                                    </li>
-                                </ul>
+                                        <!--wpml flags selector-->
+                                        @endauth
+                                        <div class="wpml-languages enabled">
+                                            @auth
+                                                <span>{{Auth::user()->name}}</span><br>
+                                            @endauth
+                                            @guest()
+                                                <a href="/login">Login</a>/<a href="/register ">Join</a>
+                                            @endguest
+                                                <br><br>
+                                            <ul class="wpml-lang-dropdown">
+
+                                                <li>
+                                                    <a href="{{route('myprofile')}}">My Account</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('user_shopcart')}}">Checkout</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('logout')}}">Logout</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
                             </div>
+
+
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
-
-
-    </header>
+    </div>
 </div>
+
+</header>
+
+</div>
+

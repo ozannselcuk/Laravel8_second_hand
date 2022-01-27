@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('admins')}}/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="{{asset('admins')}}/css/style.css" rel="stylesheet">
-   <title>Image Add</title>
+   <title>Order Son DURUM</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
 
 
 <div class="card-body">
-        <h3>Add Image</h3><br>
+        <h3>Orders Situaiton</h3><br>
         <h4>User:{{$data->user->name}}</h4>
 
         <div class="form-validation">
@@ -51,7 +51,7 @@
 
                 <div class="form-group row">
                     <div class="col-lg-8 ml-auto">
-                        <button type="submit" class="btn btn-primary">Add Image</button>
+                        <button type="submit" class="btn btn-primary">Güncelle</button>
 
                     </div>
                 </div>

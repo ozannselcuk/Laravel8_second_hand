@@ -111,8 +111,8 @@
                     <label class="col-lg-4 col-form-label">Status</span>
                     </label>
                     <div class="col-lg-6">
-                        <select class="form-control" id="val-skill" name="staatus">
-                            <option selected="selected">{{$data->staatus}}</option>
+                        <select class="form-control" id="val-skill" name="status">
+                            <option selected="selected">{{$data->status}}</option>
                             <option >True</option>
                             <option>False</option>
 
